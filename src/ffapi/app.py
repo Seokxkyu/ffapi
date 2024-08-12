@@ -5,6 +5,8 @@ import pandas as pd
 
 app = FastAPI()
 
+df = pd.read_parquet("/home/kyuseok00/code/ffapi/data")
+
 
 @app.get("/")
 def read_root():
@@ -19,7 +21,7 @@ def sample_data():
 
 @app.get("/movie/{movie_cd}")
 def movie_meta(movie_cd: str):
-    df = pd.read_parquet("/home/kyuseok00/code/ffapi/data")
+    # df = pd.read_parquet("/home/kyuseok00/code/ffapi/data")
     # df에서 movieCd == movie_cd인 row를 조회
     meta_df = df[df['movieCd'] == movie_cd]
     
